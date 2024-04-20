@@ -1,13 +1,13 @@
 {
-  "tabWidth": 4,
-  "arrowParens": "always",
-  "bracketSameLine": true,
-  "bracketSpacing": false,
-  "embeddedLanguageFormatting": "auto",
-  "endOfLine": "lf",
-  "jsxSingleQuote": true,
-  "printWidth": 93,
-  "semi": true,
-  "trailingComma": "all",
-  "singleAttributePerLine": true
+    "tabWidth": 4,
+    "arrowParens": "always",
+    "bracketSameLine": true,
+    "bracketSpacing": false,
+    "embeddedLanguageFormatting": "auto",
+    "endOfLine": "lf",
+    "jsxSingleQuote": true,
+    "printWidth": 93,
+    "semi": true,
+    "trailingComma": "all",
+    "singleAttributePerLine": true
 }
