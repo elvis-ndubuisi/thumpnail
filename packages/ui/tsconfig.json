@@ -4,10 +4,11 @@
         "outDir": "dist",
         "baseUrl": ".",
         "paths": {
-            "@/*": ["./src/*"],
-            "@ui/components/ui*": ["./src/components/ui*"]
+            "@/*": ["./*"],
+            "@/components/ui*": ["./components/ui*"],
+            "@/lib": ["./lib*"]
         }
     },
-    "include": ["src"],
-    "exclude": ["node_modules", "dist"]
+    "include": ["."],
+    "exclude": ["node_modules", "dist", "postcss.config.js"]
 }

@@ -1,9 +1,10 @@
 {
-    "name": "hashblur",
+    "name": "thumpnail",
     "private": true,
     "scripts": {
         "build": "turbo build",
         "dev": "dotenv -- turbo dev",
+        "dev:web": "dotenv -- turbo dev --filter=web",
         "lint": "turbo lint",
         "format": "prettier --write \"**/*.{ts,tsx,md}\"",
         "clean": "turbo run clean && rimraf node_modules",
