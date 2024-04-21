@@ -16,16 +16,15 @@ import {Input} from "@/components/ui/input";
 import {toast} from "@/components/ui/use-toast";
 import {Separator} from "@/components/ui/separator";
 import Link from "next/link";
-
-const schema = z.object({email: z.string().email("A valid email is required")});
+import {emailSignInSchema} from "@/lib/schemas/auth.schema";
 
 export default function Page() {
-  const form = useForm<z.infer<typeof schema>>({
+  const form = useForm<z.infer<typeof emailSignInSchema>>({
     defaultValues: {email: ""},
-    resolver: zodResolver(schema),
+    resolver: zodResolver(emailSignInSchema),
   });
 
-  function onSubmit(data: z.infer<typeof schema>) {
+  function onSubmit(data: z.infer<typeof emailSignInSchema>) {
     toast({
       title: "You submitted the following values:",
       description: (
@@ -45,7 +44,7 @@ export default function Page() {
         </p>
         <Form {...form}>
           <form
-            onSubmit={onSubmit}
+            onSubmit={form.handleSubmit(onSubmit)}
             className='grid gap-4 max-w-sm mx-auto'>
             <FormField
               control={form.control}
