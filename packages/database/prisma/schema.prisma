@@ -26,3 +26,9 @@ model Project {
   createdAt DateTime @default(now()) @map("created_at")
   updatedAt DateTime @updatedAt @map("updated_at")
 }
+
+model VerificationCode {
+  id     String @id @default(auto()) @map("_id") @db.ObjectId
+  code   Int
+  bearer String @db.ObjectId
+}

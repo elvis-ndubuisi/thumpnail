@@ -17,6 +17,7 @@ import {toast} from "@/components/ui/use-toast";
 import {Separator} from "@/components/ui/separator";
 import Link from "next/link";
 import {emailSignInSchema} from "@/lib/schemas/auth.schema";
+import {createGoogleAuthURL} from "@/actions/auth.actions";
 
 export default function Page() {
   const form = useForm<z.infer<typeof emailSignInSchema>>({
@@ -35,6 +36,15 @@ export default function Page() {
     });
   }
 
+  async function handleGoogleAuth() {
+    const resp = await createGoogleAuthURL();
+    if (resp.error) {
+      console.error(resp.error);
+    } else if (resp.success) {
+      console.debug("ookay");
+    }
+  }
+
   return (
     <main>
       <section className='mt-12'>
@@ -46,6 +56,26 @@ export default function Page() {
           <form
             onSubmit={form.handleSubmit(onSubmit)}
             className='grid gap-4 max-w-sm mx-auto'>
+            <header className='max-w-sm w-full mx-auto grid gap-3 mt-4'>
+              <Button
+                size='sm'
+                onClick={handleGoogleAuth}>
+                Sign in with google
+              </Button>
+              <Button
+                className='bg-brand text-white hover:bg-brand/80 hover:text-white'
+                size='sm'
+                variant={"outline"}>
+                Sign in with facebook
+              </Button>
+            </header>
+
+            <div className='flex items-center justify-center gap-3'>
+              <Separator className='flex-1' />
+              <p className='text-xs font-medium'>OR CONTINUE WITH</p>
+              <Separator className='flex-1' />
+            </div>
+
             <FormField
               control={form.control}
               name='email'
@@ -65,33 +95,26 @@ export default function Page() {
             <Button
               type='submit'
               size='sm'>
-              Sign in with Email
+              Sign in
             </Button>
-
-            <div className='flex items-center justify-center gap-3'>
-              <Separator className='flex-1' />
-              <p className='text-xs font-medium'>OR CONTINUE WITH</p>
-              <Separator className='flex-1' />
-            </div>
+            <footer className='max-w-sm mx-auto grid mt-4'>
+              <p className='font-medium'>
+                By clicking continue, you agree to our{" "}
+                <Link
+                  href='/'
+                  className='text-brand underline'>
+                  Terms of Service
+                </Link>{" "}
+                and{" "}
+                <Link
+                  href='/'
+                  className='text-brand underline'>
+                  Privacy Policy
+                </Link>
+                .
+              </p>
+            </footer>
           </form>
-          <footer className='max-w-sm mx-auto grid gap-3 mt-4'>
-            <Button size='sm'>Google</Button>
-            <p className='font-medium'>
-              By clicking continue, you agree to our{" "}
-              <Link
-                href='/'
-                className='text-brand underline'>
-                Terms of Service
-              </Link>{" "}
-              and{" "}
-              <Link
-                href='/'
-                className='text-brand underline'>
-                Privacy Policy
-              </Link>
-              .
-            </p>
-          </footer>
         </Form>
       </section>
     </main>

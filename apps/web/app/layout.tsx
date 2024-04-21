@@ -11,7 +11,7 @@ const Satoshi = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "Hash Blur",
+  title: "Thumpnail",
   description: "Generate placeholder images",
 };
 
