@@ -1,26 +1,41 @@
-// import "@repo/ui/src/styles/global.css";
-import "@repo/ui/styles/global.css";
+import "@/app/globals.css";
 import type {Metadata} from "next";
-import {Inter} from "next/font/google";
-import {cn} from "@repo/ui/lib/utils";
+import {cn} from "@/lib/utils";
+import localFont from "next/font/local";
+import {ThemeProvider} from "@/providers/theme-provider";
+import {Navigation} from "@/components/navigation";
 
-const inter = Inter({subsets: ["latin"]});
+const Satoshi = localFont({
+  src: "../assets/font/Satoshi-Variable.ttf",
+  variable: "--font-sans",
+});
 
 export const metadata: Metadata = {
-    title: "Hash Blur",
-    description: "Generate placeholder images",
+  title: "Hash Blur",
+  description: "Generate placeholder images",
 };
 
-export default function RootLayout({children}: {children: React.ReactNode}): JSX.Element {
-    return (
-        <html lang='en'>
-            <body
-                className={cn(
-                    "min-h-screen bg-background font-sans antialiased",
-                    //   fontSans.variable
-                )}>
-                {children}
-            </body>
-        </html>
-    );
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}): JSX.Element {
+  return (
+    <html lang='en'>
+      <body
+        className={cn(
+          "min-h-screen bg-background font-sans antialiased",
+          Satoshi.variable,
+        )}>
+        <ThemeProvider
+          attribute='class'
+          defaultTheme='system'
+          enableSystem
+          disableTransitionOnChange>
+          <Navigation />
+          {children}
+        </ThemeProvider>
+      </body>
+    </html>
+  );
 }
