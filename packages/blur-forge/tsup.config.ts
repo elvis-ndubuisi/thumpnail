@@ -4,10 +4,10 @@ export default defineConfig({
   entry: ["./src/index.ts"],
   outDir: "./dist",
   format: ["cjs", "esm"],
-  legacyOutput: true,
   sourcemap: true,
   clean: true,
+  skipNodeModulesBundle: true,
   splitting: false,
-  dts: false,
+  dts: true,
   minify: true,
 });
