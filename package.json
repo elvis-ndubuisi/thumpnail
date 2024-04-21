@@ -7,6 +7,8 @@
     "dev:web": "dotenv -- turbo dev --filter=web",
     "dev:forge": "turbo dev --filter=blur-forge",
     "lint": "turbo lint",
+    "db:push": "turbo db:push",
+    "db:generate": "turbo db:generate",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
     "clean": "turbo run clean && rimraf node_modules",
     "prepare": "husky"
