@@ -18,22 +18,29 @@ export async function createGoogleAuthURL() {
     const codeVerifier = generateCodeVerifier();
 
     cookies().set("codeVerifier", codeVerifier, {
-      path: "/",
+      // path: "/",
       httpOnly: true,
       // expires: 60 * 10,
-      sameSite: "strict",
-      secure: process.env.NODE_ENV === "production",
+      // sameSite: "strict",
+      // secure: process.env.NODE_ENV === "production",
+    });
+    cookies().set("state", state, {
+      // path: "/",
+      httpOnly: true,
+      // expires: 60 * 10,
+      // sameSite: "strict",
+      // secure: process.env.NODE_ENV === "production",
     });
 
-    const authourizationURL = await google.createAuthorizationURL(
+    const authorizationURL = await google.createAuthorizationURL(
       state,
       codeVerifier,
-      // {
-      //   scopes: [],
-      // },
+      {
+        scopes: ["email", "profile"],
+      },
     );
 
-    return {success: true, data: authourizationURL};
+    return {success: true, data: authorizationURL};
   } catch (error: any) {
     return {error: error?.message ?? "An error occurred"};
   }

@@ -41,7 +41,7 @@ export default function Page() {
     if (resp.error) {
       console.error(resp.error);
     } else if (resp.success) {
-      console.debug("ookay");
+      window.location.href = resp.data.toString();
     }
   }
 
