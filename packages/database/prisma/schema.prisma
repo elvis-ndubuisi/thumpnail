@@ -8,14 +8,47 @@ datasource db {
 }
 
 model User {
-  id        String    @id @default(auto()) @map("_id") @db.ObjectId
-  email     String    @unique
-  name      String
-  createdAt DateTime  @default(now()) @map("created_at")
-  updatedAt DateTime  @updatedAt @map("updated_at")
-  projects  Project[]
+  id            String    @id @default(auto()) @map("_id") @db.ObjectId
+  email         String    @unique
+  name          String
+  givenName     String?
+  emailVerified Boolean   @default(false)
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+  projects      Project[]
+  accounts      Account[]
+  sessions      Session[]
 
   @@map("users")
+}
+
+enum Provider {
+  google
+  facebook
+}
+
+model Account {
+  id             String    @id @default(auto()) @map("_id") @db.ObjectId
+  userId         String    @db.ObjectId
+  providerId     Provider  @unique
+  providerUserId String    @unique
+  refresh_token  String?   @db.String
+  access_token   String?   @db.String
+  expires_at     DateTime?
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("accounts")
+}
+
+model Session {
+  sessionId String   @id @default(auto()) @map("_id") @db.ObjectId
+  id        String
+  userId    String   @db.ObjectId
+  expiresAt DateTime
+  user      User     @relation(references: [id], fields: [userId], onDelete: Cascade)
+
+  @@map("sessions")
 }
 
 model Project {
@@ -25,6 +58,8 @@ model Project {
   userId    String?  @db.ObjectId
   createdAt DateTime @default(now()) @map("created_at")
   updatedAt DateTime @updatedAt @map("updated_at")
+
+  @@map("projects")
 }
 
 model VerificationCode {
