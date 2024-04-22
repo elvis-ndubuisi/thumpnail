@@ -10,7 +10,7 @@ export async function emailSignIn(values: z.infer<typeof emailSignInSchema>) {
   } catch (error) {}
 }
 
-export async function facebookSignup() {}
+export async function createFacebookAuthURL() {}
 
 export async function createGoogleAuthURL() {
   try {

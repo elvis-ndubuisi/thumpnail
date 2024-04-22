@@ -17,7 +17,7 @@ import {toast} from "@/components/ui/use-toast";
 import {Separator} from "@/components/ui/separator";
 import Link from "next/link";
 import {emailSignInSchema} from "@/lib/schemas/auth.schema";
-import {createGoogleAuthURL} from "@/actions/auth.actions";
+import {createFacebookAuthURL, createGoogleAuthURL} from "@/actions/auth.actions";
 
 export default function Page() {
   const form = useForm<z.infer<typeof emailSignInSchema>>({
@@ -45,6 +45,10 @@ export default function Page() {
     }
   }
 
+  async function handleFacebookAuth() {
+    // const resp = await createFacebookAuthURL();
+  }
+
   return (
     <main>
       <section className='mt-12'>
@@ -59,10 +63,12 @@ export default function Page() {
             <header className='max-w-sm w-full mx-auto grid gap-3 mt-4'>
               <Button
                 size='sm'
+                variant='outline'
                 onClick={handleGoogleAuth}>
                 Sign in with google
               </Button>
               <Button
+                onClick={handleFacebookAuth}
                 className='bg-brand text-white hover:bg-brand/80 hover:text-white'
                 size='sm'
                 variant={"outline"}>
@@ -72,7 +78,7 @@ export default function Page() {
 
             <div className='flex items-center justify-center gap-3'>
               <Separator className='flex-1' />
-              <p className='text-xs font-medium'>OR CONTINUE WITH</p>
+              <p className='text-xs font-medium'>OR CONTINUE WITH EMAIL</p>
               <Separator className='flex-1' />
             </div>
 
@@ -88,6 +94,7 @@ export default function Page() {
                     autoCorrect='off'
                     {...field}
                   />
+                  <FormMessage />
                 </FormItem>
               )}
             />

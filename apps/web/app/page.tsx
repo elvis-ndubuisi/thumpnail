@@ -17,7 +17,7 @@ export default function Page(): JSX.Element {
       <main className='mx-auto max-w-6xl px-2 md:px-1 lg:px-0'>
         {/* <ModeToggle /> */}
         <section className='mt-10 flex flex-col items-center justify-center space-y-3'>
-          <h3 className='text-center text-brand'>Thumpnail</h3>
+          <h3 className='text-center text-brand font-bold'>Thumpnail</h3>
           <h1 className='font-bold text-5xl text-center max-w-2xl'>
             Improve Load Times and Enhance User Experience
           </h1>
