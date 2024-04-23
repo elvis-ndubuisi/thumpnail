@@ -3,7 +3,7 @@ import {cookies} from "next/headers";
 import {NextRequest, NextResponse} from "next/server";
 import {db} from "@/lib/db";
 import {GoogleUserInfo} from "@/lib/interfaces";
-import {lucia} from "@/lib/auth";
+import {lucia} from "@/lib/lucia-auth/auth";
 import {User} from "database/orms";
 import {OAuth2RequestError} from "arctic";
 

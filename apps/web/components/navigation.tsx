@@ -1,5 +1,6 @@
 import Link from "next/link";
 import {buttonVariants} from "./ui/button";
+import {Badge, badgeVariants} from "./ui/badge";
 
 const LINKS = [
   {name: "Home", to: "/"},
@@ -23,6 +24,11 @@ export function Navigation() {
               {link.name}
             </Link>
           ))}
+          <Link
+            href='/sign-in'
+            className={badgeVariants({variant: "default"})}>
+            View account
+          </Link>
         </nav>
       </section>
     </header>
