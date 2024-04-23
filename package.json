@@ -5,6 +5,7 @@
     "build": "turbo build",
     "dev": "dotenv -- turbo dev",
     "dev:web": "dotenv -- turbo dev --filter=web",
+    "dev:hash-service": "turbo dev --filter=hash-service",
     "dev:forge": "turbo dev --filter=blur-forge",
     "lint": "turbo lint",
     "db:push": "turbo db:push",
