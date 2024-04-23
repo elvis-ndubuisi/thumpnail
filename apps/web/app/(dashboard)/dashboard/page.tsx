@@ -3,15 +3,15 @@ import {
   ResizablePanel,
   ResizablePanelGroup,
 } from "@/components/ui/resizable";
+import {Button} from "@/components/ui/button";
 
 export default function Page() {
   return (
-    <section className='h-screen'>
-      {/* <ResizablePanelGroup direction='horizontal'>
-        <ResizablePanel>One</ResizablePanel>
-        <ResizableHandle withHandle />
-        <ResizablePanel>Two</ResizablePanel>
-      </ResizablePanelGroup> */}
-    </section>
+    <main className='h-[inherit] bg-red-300'>
+      <header>
+        <h3>Welcome back!</h3>
+      </header>
+      <footer></footer>
+    </main>
   );
 }
