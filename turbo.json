@@ -15,7 +15,8 @@
       "persistent": true
     },
     "clean": {
-      "outputs": []
+      "outputs": [],
+      "cache": false
     },
     "test": {
       "outputs": []
