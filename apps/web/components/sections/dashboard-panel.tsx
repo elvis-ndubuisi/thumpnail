@@ -3,10 +3,8 @@
 import React from "react";
 import {ResizableHandle, ResizablePanel, ResizablePanelGroup} from "../ui/resizable";
 import {SideNavigation} from "./side-navigation";
-import {CircleGaugeIcon, ToyBrickIcon, BanknoteIcon} from "lucide-react";
 import {cn} from "@/lib/utils";
 import {TooltipProvider} from "../ui/tooltip";
-import {Button} from "../ui/button";
 import {DLINKS} from "@/assets/data/links";
 
 export function DashboardPanel({
@@ -36,15 +34,15 @@ export function DashboardPanel({
           minSize={15}
           maxSize={18}
           onExpand={() => {
-            setIsCollapsed(!isCollapsed);
+            setIsCollapsed(false);
             document.cookie = `react-resizable-panels:collapsed=${JSON.stringify(
-              isCollapsed,
+              false,
             )}`;
           }}
           onCollapse={() => {
-            setIsCollapsed(!isCollapsed);
+            setIsCollapsed(true);
             document.cookie = `react-resizable-panels:collapsed=${JSON.stringify(
-              isCollapsed,
+              true,
             )}`;
           }}
           className={cn(
@@ -61,7 +59,7 @@ export function DashboardPanel({
         <ResizablePanel
           defaultSize={defaultLayout[1]}
           minSize={30}>
-          <main className='p-3'>{children}</main>
+          {children}
         </ResizablePanel>
       </ResizablePanelGroup>
     </TooltipProvider>

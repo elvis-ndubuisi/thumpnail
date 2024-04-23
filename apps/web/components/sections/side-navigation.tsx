@@ -3,9 +3,10 @@
 import Link from "next/link";
 import {cn} from "@/lib/utils";
 import {buttonVariants} from "../ui/button";
-import {LucideIcon, LogOutIcon} from "lucide-react";
+import {LucideIcon, MoonIcon, SunMediumIcon} from "lucide-react";
 import {Tooltip, TooltipContent, TooltipTrigger} from "../ui/tooltip";
 import {Separator} from "../ui/separator";
+import {Avatar, AvatarFallback, AvatarImage} from "../ui/avatar";
 
 interface NavProps {
   isCollapsed: boolean;
@@ -23,8 +24,20 @@ export function SideNavigation(props: NavProps) {
     <aside
       className='group flex flex-col h-full gap-4 py-2 data-[collapsed=true]:py-2'
       data-collapsed={props.isCollapsed}>
-      <div>
-        <p>okay</p>
+      <div className='flex items-center gap-2 px-2 group-[[data-collapsed=true]]:justify-start group-[[data-collapsed=true]]:px-2'>
+        <Avatar>
+          <AvatarImage
+            src='https://github.com/shadcn.png'
+            alt='@shadcn'
+          />
+          <AvatarFallback>CN</AvatarFallback>
+        </Avatar>
+        {!props.isCollapsed && (
+          <div className='flex flex-col'>
+            <h5 className='font-semibold'>Elvisn Ndubuisi</h5>
+            <p className='text-sm font-medium opacity-50'>provictor.ie@gmail.com</p>
+          </div>
+        )}
       </div>
       <Separator />
 
@@ -130,6 +143,7 @@ export function SideNavigation(props: NavProps) {
             </Link>
           ),
         )}
+        {/* TODO: Add mode toggler */}
       </div>
     </aside>
   );
