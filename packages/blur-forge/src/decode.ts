@@ -1,6 +1,6 @@
 import {decode83} from "./base83";
-import {sRGBToLinear, signPow, linearTosRGB} from "./utils";
 import {ValidationError} from "./error";
+import {linearTosRGB, signPow, sRGBToLinear} from "./utils";
 
 /**
  * Returns an error message if invalid or undefined if valid

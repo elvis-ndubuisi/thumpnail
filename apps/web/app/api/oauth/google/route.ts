@@ -1,11 +1,12 @@
-import {google} from "@/lib/lucia-auth/oauth";
 import {cookies} from "next/headers";
 import {NextRequest, NextResponse} from "next/server";
+import {OAuth2RequestError} from "arctic";
+import {User} from "database/orms";
+
 import {db} from "@/lib/db";
 import {GoogleUserInfo} from "@/lib/interfaces";
 import {lucia} from "@/lib/lucia-auth/auth";
-import {User} from "database/orms";
-import {OAuth2RequestError} from "arctic";
+import {google} from "@/lib/lucia-auth/oauth";
 
 export async function GET(req: NextRequest) {
   const url = req.nextUrl;

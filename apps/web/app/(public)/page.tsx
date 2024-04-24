@@ -1,8 +1,9 @@
 import Image from "next/image";
-import {ModeToggle} from "@/components/mode-toggle";
-import {Button} from "@/components/ui/button";
 import Link from "next/link";
+
+import {ModeToggle} from "@/components/mode-toggle";
 import {FAQsSection} from "@/components/sections/faqs";
+import {Button} from "@/components/ui/button";
 
 export default function Page(): JSX.Element {
   return (
@@ -17,11 +18,11 @@ export default function Page(): JSX.Element {
       <main className='mx-auto max-w-6xl px-2 md:px-1 lg:px-0'>
         {/* <ModeToggle /> */}
         <section className='mt-10 flex flex-col items-center justify-center space-y-3'>
-          <h3 className='text-center text-brand font-bold'>Thumpnail</h3>
-          <h1 className='font-bold text-5xl text-center max-w-2xl'>
+          <h3 className='text-brand text-center font-bold'>Thumpnail</h3>
+          <h1 className='max-w-2xl text-center text-5xl font-bold'>
             Improve Load Times and Enhance User Experience
           </h1>
-          <p className='max-w-3xl text-center p-3 text-lg font-medium'>
+          <p className='max-w-3xl p-3 text-center text-lg font-medium'>
             Thumpnail is a powerful SaaS platform that generates high-quality
             blurhash images for your web applications. With our simple integration
             and instant results, you can improve loading times and enhance user

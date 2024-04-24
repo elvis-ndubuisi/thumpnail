@@ -1,11 +1,14 @@
 import {
-  LucideIcon,
-  CircleGaugeIcon,
-  ToyBrickIcon,
   BanknoteIcon,
-  MessageSquareReplyIcon,
+  BoltIcon,
+  BookOpenTextIcon,
   BookTextIcon,
-  UserCog2Icon,
+  CircleGaugeIcon,
+  CircleHelpIcon,
+  LucideIcon,
+  MessageSquareReplyIcon,
+  SettingsIcon,
+  ToyBrickIcon,
 } from "lucide-react";
 
 export const DLINKS: {
@@ -13,7 +16,7 @@ export const DLINKS: {
   label?: string;
   icon: LucideIcon;
   to?: string;
-  variant: "default" | "ghost" | "outline";
+  variant: "default" | "ghost" | "outline" | "secondary";
 }[][] = [
   [
     {
@@ -28,24 +31,32 @@ export const DLINKS: {
       label: "",
       to: "/integration",
       icon: ToyBrickIcon,
-      variant: "default",
+      variant: "secondary",
     },
     {
       title: "Billing",
       label: "",
       to: "/billing",
       icon: BanknoteIcon,
-      variant: "ghost",
+      variant: "outline",
+    },
+    {
+      title: "Tokens",
+      label: "",
+      to: "/billing",
+      icon: BoltIcon,
+      variant: "outline",
     },
   ],
   [
-    {title: "Settings", icon: UserCog2Icon, variant: "default", to: "/settings"},
+    {title: "Settings", icon: SettingsIcon, variant: "ghost", to: "/settings"},
+    {title: "Get Support", icon: CircleHelpIcon, variant: "ghost"},
     {
       title: "Feedback",
       label: "",
       icon: MessageSquareReplyIcon,
-      variant: "outline",
+      variant: "ghost",
     },
-    {title: "Guide", icon: BookTextIcon, variant: "ghost"},
+    {title: "Documentation", icon: BookOpenTextIcon, variant: "ghost"},
   ],
 ];

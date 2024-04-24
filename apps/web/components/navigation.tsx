@@ -1,6 +1,7 @@
 import Link from "next/link";
-import {buttonVariants} from "./ui/button";
+
 import {Badge, badgeVariants} from "./ui/badge";
+import {buttonVariants} from "./ui/button";
 
 const LINKS = [
   {name: "Home", to: "/"},
@@ -10,9 +11,9 @@ const LINKS = [
 
 export function Navigation() {
   return (
-    <header className='bg-black text-background dark:text-white dark:bg-foreground/5'>
-      <section className='mx-auto max-w-6xl px-2 md:px-1 lg:px-0 flex items-center justify-between py-2'>
-        <h1 className='font-medium text-[0.9rem] opacity-80 hover:opacity-100'>
+    <header className='text-background dark:bg-foreground/5 bg-black dark:text-white'>
+      <section className='mx-auto flex max-w-6xl items-center justify-between px-2 py-2 md:px-1 lg:px-0'>
+        <h1 className='text-[0.9rem] font-medium opacity-80 hover:opacity-100'>
           ThumbNail
         </h1>
         <nav className='flex items-center gap-8'>
@@ -20,7 +21,7 @@ export function Navigation() {
             <Link
               href={link.to}
               key={link.name + idx}
-              className='font-normal text-[0.9rem] opacity-80 hover:opacity-100'>
+              className='text-[0.9rem] font-normal opacity-80 hover:opacity-100'>
               {link.name}
             </Link>
           ))}

@@ -9,8 +9,8 @@ import {
 export function FAQsSection() {
   return (
     <section className='mt-16'>
-      <h3 className='font-bold text-3xl text-center mb-4'>FAQs</h3>
-      <p className='font-medium text-center max-w-xl mx-auto text-lg'>
+      <h3 className='mb-4 text-center text-3xl font-bold'>FAQs</h3>
+      <p className='mx-auto max-w-xl text-center text-lg font-medium'>
         Find answers to common questions about blurhash images, integration, and
         usage.
       </p>
@@ -18,16 +18,16 @@ export function FAQsSection() {
       <Accordion
         type='single'
         collapsible
-        className='max-w-2xl mx-auto mt-12'>
+        className='mx-auto mt-12 max-w-2xl'>
         {faqs.map((faq, idx) => (
           <AccordionItem
             value={faq.question}
             key={faq.question + idx}>
-            <AccordionTrigger className='font-semibold font-medium'>
+            <AccordionTrigger className='font-medium font-semibold'>
               {faq.question}
             </AccordionTrigger>
 
-            <AccordionContent className='font-medium font-lg'>
+            <AccordionContent className='font-lg font-medium'>
               {faq.answer}
             </AccordionContent>
           </AccordionItem>

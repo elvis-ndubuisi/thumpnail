@@ -1,6 +1,6 @@
 import {encode83} from "./base83";
-import {sRGBToLinear, signPow, linearTosRGB} from "./utils";
 import {ValidationError} from "./error";
+import {linearTosRGB, signPow, sRGBToLinear} from "./utils";
 
 type NumberTriplet = [number, number, number];
 

@@ -1,22 +1,23 @@
 "use client";
 
-import {z} from "zod";
+import Link from "next/link";
 import {zodResolver} from "@hookform/resolvers/zod";
 import {useForm} from "react-hook-form";
-import {emailSignInSchema} from "@/lib/schemas/auth.schema";
-import {Button} from "../ui/button";
-import {Separator} from "../ui/separator";
-import Link from "next/link";
-import {Input} from "../ui/input";
+import {z} from "zod";
+
 import {
-  FormField,
   Form,
   FormControl,
+  FormField,
+  FormItem,
   FormLabel,
   FormMessage,
-  FormItem,
 } from "@/components/ui/form";
 import {toast} from "@/components/ui/use-toast";
+import {emailSignInSchema} from "@/lib/schemas/auth.schema";
+import {Button} from "../ui/button";
+import {Input} from "../ui/input";
+import {Separator} from "../ui/separator";
 
 export function SignInForm() {
   const form = useForm<z.infer<typeof emailSignInSchema>>({
@@ -39,7 +40,7 @@ export function SignInForm() {
     <Form {...form}>
       <form
         onSubmit={form.handleSubmit(onSubmit)}
-        className='grid gap-4 max-w-sm mx-auto'>
+        className='mx-auto grid max-w-sm gap-4'>
         <FormField
           control={form.control}
           name='email'
@@ -62,7 +63,7 @@ export function SignInForm() {
           size='sm'>
           Sign in
         </Button>
-        <footer className='max-w-sm mx-auto grid mt-4'>
+        <footer className='mx-auto mt-4 grid max-w-sm'>
           <p className='font-medium'>
             By clicking continue, you agree to our{" "}
             <Link

@@ -1,5 +1,6 @@
-import {Lucia} from "lucia";
 import {PrismaAdapter} from "@lucia-auth/adapter-prisma";
+import {Lucia} from "lucia";
+
 import {db} from "../db";
 
 const adapter = new PrismaAdapter(db.session, db.user);

@@ -1,7 +1,9 @@
+import Link from "next/link";
+import {BellIcon, CircleHelpIcon, MessageCircleIcon} from "lucide-react";
+
 import {Button, buttonVariants} from "@/components/ui/button";
 import {Separator} from "@/components/ui/separator";
-import {BellIcon, CircleHelpIcon, MessageCircleIcon} from "lucide-react";
-import Link from "next/link";
+import {CreateProject} from "@/components/widgets/create-project";
 
 export default function Page() {
   return (
@@ -11,22 +13,21 @@ export default function Page() {
         <div className='flex gap-3'>
           <Link
             href='/help'
-            className={buttonVariants({variant: "secondary", size:"sm"})}>
+            className={buttonVariants({variant: "secondary", size: "sm"})}>
             Help
           </Link>
           <Link
             href='/feedback'
-            className={buttonVariants({variant: "secondary", size:"sm"})}>
+            className={buttonVariants({variant: "secondary", size: "sm"})}>
             Feedback
           </Link>
         </div>
       </header>
-      {/* <header className='flex items-center justify-between my-4'>
-        <h3 className='font-bold text-2xl'>Welcome back!</h3>
+      <section className='flex items-center justify-between px-2'>
+        <h2 className='text-3xl font-extrabold'>Dashbaord</h2>
+        <CreateProject />
+      </section>
 
-        <Button size='sm'>Create project</Button>
-      </header>
-      <Separator /> */}
       <footer>sadf</footer>
     </main>
   );

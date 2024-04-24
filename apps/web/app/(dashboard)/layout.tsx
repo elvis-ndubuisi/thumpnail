@@ -1,4 +1,5 @@
 import {cookies} from "next/headers";
+
 import {DashboardPanel} from "@/components/sections/dashboard-panel";
 
 export default function Layout({children}: React.PropsWithChildren) {
@@ -9,7 +10,7 @@ export default function Layout({children}: React.PropsWithChildren) {
   const defaultCollapsed = collapsed ? JSON.parse(collapsed.value) : undefined;
 
   return (
-    <main className='h-screen max-w-screen-2xl mx-auto'>
+    <main className='mx-auto h-screen max-w-screen-2xl'>
       <DashboardPanel
         defaultLayout={defaultLayout}
         navCollaspedSize={4}

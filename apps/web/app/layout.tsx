@@ -1,9 +1,11 @@
 import "@/app/globals.css";
+
 import type {Metadata} from "next";
-import {cn} from "@/lib/utils";
 import localFont from "next/font/local";
-import {ThemeProvider} from "@/providers/theme-provider";
+
 import {Navigation} from "@/components/navigation";
+import {cn} from "@/lib/utils";
+import {ThemeProvider} from "@/providers/theme-provider";
 
 const Satoshi = localFont({
   src: "../assets/font/Satoshi-Variable.ttf",
@@ -24,7 +26,7 @@ export default function RootLayout({
     <html lang='en'>
       <body
         className={cn(
-          "min-h-screen bg-background font-sans antialiased relative",
+          "bg-background relative min-h-screen font-sans antialiased",
           Satoshi.variable,
         )}>
         <ThemeProvider

@@ -1,4 +1,4 @@
-import {Google, Facebook} from "arctic";
+import {Facebook, Google} from "arctic";
 
 export const google = new Google(
   process.env.GOOGLE_CLIENT_ID!,

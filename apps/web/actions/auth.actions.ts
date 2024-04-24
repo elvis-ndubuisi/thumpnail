@@ -1,11 +1,13 @@
 "use server";
-import {z} from "zod";
-import {emailSignInSchema} from "@/lib/schemas/auth.schema";
-import {google} from "@/lib/lucia-auth/oauth";
-import {generateCodeVerifier, generateState} from "arctic";
+
 import {cookies} from "next/headers";
 import {redirect} from "next/navigation";
+import {generateCodeVerifier, generateState} from "arctic";
+import {z} from "zod";
+
 import {lucia} from "@/lib/lucia-auth/auth";
+import {google} from "@/lib/lucia-auth/oauth";
+import {emailSignInSchema} from "@/lib/schemas/auth.schema";
 
 export async function emailSignIn(values: z.infer<typeof emailSignInSchema>) {
   try {

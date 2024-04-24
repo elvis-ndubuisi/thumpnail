@@ -1,11 +1,12 @@
 "use client";
 
 import React from "react";
-import {ResizableHandle, ResizablePanel, ResizablePanelGroup} from "../ui/resizable";
-import {SideNavigation} from "./side-navigation";
-import {cn} from "@/lib/utils";
-import {TooltipProvider} from "../ui/tooltip";
+
 import {DLINKS} from "@/assets/data/links";
+import {cn} from "@/lib/utils";
+import {ResizableHandle, ResizablePanel, ResizablePanelGroup} from "../ui/resizable";
+import {TooltipProvider} from "../ui/tooltip";
+import {SideNavigation} from "./side-navigation";
 
 export function DashboardPanel({
   children,

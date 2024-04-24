@@ -1,23 +1,24 @@
 "use client";
 
-import {Button} from "@/components/ui/button";
+import Link from "next/link";
+import {zodResolver} from "@hookform/resolvers/zod";
 import {useForm} from "react-hook-form";
 import {z} from "zod";
-import {zodResolver} from "@hookform/resolvers/zod";
+
+import {createFacebookAuthURL, createGoogleAuthURL} from "@/actions/auth.actions";
+import {Button} from "@/components/ui/button";
 import {
-  FormField,
   Form,
   FormControl,
+  FormField,
+  FormItem,
   FormLabel,
   FormMessage,
-  FormItem,
 } from "@/components/ui/form";
 import {Input} from "@/components/ui/input";
-import {toast} from "@/components/ui/use-toast";
 import {Separator} from "@/components/ui/separator";
-import Link from "next/link";
+import {toast} from "@/components/ui/use-toast";
 import {emailSignInSchema} from "@/lib/schemas/auth.schema";
-import {createFacebookAuthURL, createGoogleAuthURL} from "@/actions/auth.actions";
 
 export default function Page() {
   const form = useForm<z.infer<typeof emailSignInSchema>>({
@@ -52,15 +53,15 @@ export default function Page() {
   return (
     <main>
       <section className='mt-12'>
-        <h3 className='font-bold text-2xl text-center'>Sign In</h3>
-        <p className='text-center font-medium my-4 text-lg'>
+        <h3 className='text-center text-2xl font-bold'>Sign In</h3>
+        <p className='my-4 text-center text-lg font-medium'>
           Enter your email below to process
         </p>
         <Form {...form}>
           <form
             onSubmit={form.handleSubmit(onSubmit)}
-            className='grid gap-4 max-w-sm mx-auto'>
-            <header className='max-w-sm w-full mx-auto grid gap-3 mt-4'>
+            className='mx-auto grid max-w-sm gap-4'>
+            <header className='mx-auto mt-4 grid w-full max-w-sm gap-3'>
               <Button
                 size='sm'
                 variant='outline'
@@ -69,7 +70,7 @@ export default function Page() {
               </Button>
               <Button
                 onClick={handleFacebookAuth}
-                className='bg-brand text-white hover:bg-brand/80 hover:text-white'
+                className='bg-brand hover:bg-brand/80 text-white hover:text-white'
                 size='sm'
                 variant={"outline"}>
                 Sign in with facebook
@@ -104,7 +105,7 @@ export default function Page() {
               size='sm'>
               Sign in
             </Button>
-            <footer className='max-w-sm mx-auto grid mt-4'>
+            <footer className='mx-auto mt-4 grid max-w-sm'>
               <p className='font-medium'>
                 By clicking continue, you agree to our{" "}
                 <Link
