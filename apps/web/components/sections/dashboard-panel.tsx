@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import {User} from "database/orms";
 
 import {DLINKS} from "@/assets/data/links";
 import {cn} from "@/lib/utils";
@@ -9,11 +10,13 @@ import {TooltipProvider} from "../ui/tooltip";
 import {SideNavigation} from "./side-navigation";
 
 export function DashboardPanel({
+  user,
   children,
   defaultLayout = [265, 440, 655],
   defaultCollapsed = false,
   navCollaspedSize,
 }: React.PropsWithChildren<{
+  user: User;
   defaultLayout: number[] | undefined;
   defaultCollapsed?: boolean;
   navCollaspedSize: number;
@@ -50,6 +53,7 @@ export function DashboardPanel({
             isCollapsed && "min-w-[50px] transition-all duration-300 ease-in-out",
           )}>
           <SideNavigation
+            user={user}
             isCollapsed={isCollapsed}
             links={DLINKS}
           />

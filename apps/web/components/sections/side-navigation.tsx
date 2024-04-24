@@ -1,16 +1,19 @@
 "use client";
 
 import Link from "next/link";
-import {LucideIcon, MoonIcon, SunMediumIcon} from "lucide-react";
+import {User} from "database/orms";
+import {LogOutIcon, LucideIcon} from "lucide-react";
 
+import {signOut} from "@/actions/auth.actions";
 import {cn} from "@/lib/utils";
 import {ModeToggle} from "../mode-toggle";
 import {Avatar, AvatarFallback, AvatarImage} from "../ui/avatar";
-import {buttonVariants} from "../ui/button";
+import {Button, buttonVariants} from "../ui/button";
 import {Separator} from "../ui/separator";
 import {Tooltip, TooltipContent, TooltipTrigger} from "../ui/tooltip";
 
 interface NavProps {
+  user: User;
   isCollapsed: boolean;
   links: {
     title: string;
@@ -36,8 +39,10 @@ export function SideNavigation(props: NavProps) {
         </Avatar>
         {!props.isCollapsed && (
           <div className='flex flex-col'>
-            <h5 className='text-lg font-medium'>Elvisn Ndubuisi</h5>
-            {/* <p className='text-sm font-medium opacity-50'>provictor.ie@gmail.com</p> */}
+            <h5 className='font-semibold'>
+              {props.user?.name ?? props.user.givenName ?? ""}
+            </h5>
+            <p className='text-xs font-medium opacity-80'>{props.user.email}</p>
           </div>
         )}
       </div>
@@ -144,6 +149,37 @@ export function SideNavigation(props: NavProps) {
               )}
             </Link>
           ),
+        )}
+        <Separator />
+        {props.isCollapsed ? (
+          <Tooltip>
+            <TooltipTrigger asChild>
+              <form action={signOut}>
+                <Button
+                  variant={"destructive"}
+                  size='icon'
+                  type='submit'>
+                  <LogOutIcon className='h-4 w-4' />
+                </Button>
+              </form>
+            </TooltipTrigger>
+            <TooltipContent
+              side='right'
+              className='flex items-center gap-4'>
+              Log out
+            </TooltipContent>
+          </Tooltip>
+        ) : (
+          <form action={signOut}>
+            <Button
+              variant={"destructive"}
+              className='w-full justify-start'
+              size={"sm"}
+              type='submit'>
+              <LogOutIcon className='mr-2 h-4 w-4' />
+              <span>Log out</span>
+            </Button>
+          </form>
         )}
         <ModeToggle />
         {/* TODO: Add mode toggler */}

@@ -1,5 +1,6 @@
 import {cookies} from "next/headers";
 import {redirect} from "next/navigation";
+import {User} from "database/orms";
 
 import {DashboardPanel} from "@/components/sections/dashboard-panel";
 import {validateRequest} from "@/lib/lucia-auth/auth";
@@ -17,6 +18,7 @@ export default async function Layout({children}: React.PropsWithChildren) {
   return (
     <main className='mx-auto h-screen max-w-screen-2xl'>
       <DashboardPanel
+        user={user as User}
         defaultLayout={defaultLayout}
         navCollaspedSize={4}
         defaultCollapsed={defaultCollapsed}>

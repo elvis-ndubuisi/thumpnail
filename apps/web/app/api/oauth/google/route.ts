@@ -12,7 +12,6 @@ export async function GET(req: NextRequest) {
   const url = req.nextUrl;
   const code = url.searchParams.get("code");
   const state = url.searchParams.get("state");
-  let user: User;
 
   if (!code || !state)
     return NextResponse.json({error: "Invalid request"}, {status: 400});
@@ -38,7 +37,7 @@ export async function GET(req: NextRequest) {
     const payload = (await googleRes.json()) as GoogleUserInfo;
 
     await db.$transaction(async (trx) => {
-      user = await trx.user.upsert({
+      const user = await trx.user.upsert({
         where: {email: payload.email},
         create: {
           email: payload.email,
@@ -70,11 +69,14 @@ export async function GET(req: NextRequest) {
           userId: user.id,
         },
       });
+      const session = await lucia.createSession(user.id, {});
+      const sessionCookie = lucia.createSessionCookie(session.id);
+      cookies().set(
+        sessionCookie.name,
+        sessionCookie.value,
+        sessionCookie.attributes,
+      );
     });
-
-    const session = await lucia.createSession(user.id, {});
-    const sessionCookie = lucia.createSessionCookie(session.id);
-    cookies().set(sessionCookie.name, sessionCookie.value, sessionCookie.attributes);
 
     return NextResponse.redirect(
       new URL("/dashboard", process.env.NEXT_PUBLIC_APP_URL),

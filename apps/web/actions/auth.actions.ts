@@ -5,7 +5,7 @@ import {redirect} from "next/navigation";
 import {generateCodeVerifier, generateState} from "arctic";
 import {z} from "zod";
 
-import {lucia} from "@/lib/lucia-auth/auth";
+import {lucia, validateRequest} from "@/lib/lucia-auth/auth";
 import {google} from "@/lib/lucia-auth/oauth";
 import {emailSignInSchema} from "@/lib/schemas/auth.schema";
 
@@ -53,6 +53,16 @@ export async function createGoogleAuthURL() {
   } catch (error: any) {
     return {error: error?.message ?? "An error occurred"};
   }
+}
+
+export async function signOut() {
+  const result = await validateRequest();
+  if (!result.session) return {error: "Unauthorized"};
+
+  await lucia.invalidateSession(result.session.id);
+  const sessionCookie = lucia.createBlankSessionCookie();
+  cookies().set(sessionCookie.name, sessionCookie.value, sessionCookie.attributes);
+  return redirect("/sign-in");
 }
 
 // export async function logout() {
