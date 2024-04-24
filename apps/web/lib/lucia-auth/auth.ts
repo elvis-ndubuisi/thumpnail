@@ -22,7 +22,6 @@ export const validateRequest = cache(
     {user: User; session: Session} | {user: null; session: null}
   > => {
     const sessionId = cookies().get(lucia.sessionCookieName)?.value ?? null;
-    console.error(sessionId);
 
     if (!sessionId) return {user: null, session: null};
 
@@ -55,5 +54,14 @@ export const validateRequest = cache(
 declare module "lucia" {
   interface Register {
     Lucia: typeof lucia;
+    DatabaseUserAttributes: DatabaseUserAttributes;
   }
+}
+
+interface DatabaseUserAttributes {
+  id: string;
+  email: string;
+  name: string;
+  givenName?: string;
+  emailVerified: boolean;
 }

@@ -5,6 +5,7 @@ import {
   BookTextIcon,
   CircleGaugeIcon,
   CircleHelpIcon,
+  FolderKanbanIcon,
   LucideIcon,
   MessageSquareReplyIcon,
   SettingsIcon,
@@ -27,11 +28,18 @@ export const DLINKS: {
       variant: "default",
     },
     {
+      icon: FolderKanbanIcon,
+      label: "",
+      title: "Projects",
+      to: "/projects",
+      variant: "outline",
+    },
+    {
       title: "Integration",
       label: "",
       to: "/integration",
       icon: ToyBrickIcon,
-      variant: "secondary",
+      variant: "outline",
     },
     {
       title: "Billing",
