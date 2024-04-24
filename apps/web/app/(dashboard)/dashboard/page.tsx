@@ -1,9 +1,11 @@
 import Link from "next/link";
+import {redirect} from "next/navigation";
 import {BellIcon, CircleHelpIcon, MessageCircleIcon} from "lucide-react";
 
 import {Button, buttonVariants} from "@/components/ui/button";
 import {Separator} from "@/components/ui/separator";
 import {CreateProject} from "@/components/widgets/create-project";
+import {validateRequest} from "@/lib/lucia-auth/auth";
 
 export default function Page() {
   return (
