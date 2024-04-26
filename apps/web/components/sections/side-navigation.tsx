@@ -32,19 +32,21 @@ export function SideNavigation(props: NavProps) {
       <div className='flex items-center gap-2 px-2 group-[[data-collapsed=true]]:justify-start group-[[data-collapsed=true]]:px-2'>
         <Avatar>
           <AvatarImage
-            src='https://github.com/shadcn.png'
+            // src='https://github.com/shadcn.png'
+            src=''
             alt='@shadcn'
           />
-          <AvatarFallback>CN</AvatarFallback>
+          <AvatarFallback>TN</AvatarFallback>
         </Avatar>
-        {!props.isCollapsed && (
+        {!props.isCollapsed && <h5 className='text-lg font-extrabold'>ThumpNail</h5>}
+        {/* {!props.isCollapsed && (
           <div className='flex flex-col'>
             <h5 className='font-semibold'>
               {props.user?.name ?? props.user.givenName ?? ""}
             </h5>
             <p className='text-xs font-medium opacity-80'>{props.user.email}</p>
           </div>
-        )}
+        )} */}
       </div>
       <Separator />
 

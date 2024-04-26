@@ -78,10 +78,9 @@ export async function GET(req: NextRequest) {
       );
     });
 
-    return NextResponse.redirect(
-      new URL("/dashboard", process.env.NEXT_PUBLIC_APP_URL),
-      {status: 302},
-    );
+    return NextResponse.redirect(new URL("/keys", process.env.NEXT_PUBLIC_APP_URL), {
+      status: 302,
+    });
   } catch (error: any) {
     if (error instanceof OAuth2RequestError) {
       // invalid code

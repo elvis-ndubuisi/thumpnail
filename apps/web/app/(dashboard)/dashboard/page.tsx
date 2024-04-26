@@ -24,12 +24,12 @@ export default function Page() {
           </Link>
 
           <Button
-            className='from-brand to-brand/70 hover:brand/60 text-white'
+            className='from-brand to-brand02 hover:brand/60 bg-gradient-to-bl text-white'
             size='sm'
             asChild>
             <Link
               href={"/projects/new-project"}
-              className='flex items-center gap-2 bg-gradient-to-bl'>
+              className='flex items-center gap-2'>
               <PackagePlusIcon className='h-4 w-4' />
               <span>New project</span>
             </Link>
