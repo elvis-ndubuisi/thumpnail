@@ -17,8 +17,8 @@
     "^(next/(.*)$)|^(next$)",
     "<THIRD_PARTY_MODULES>",
     "",
-    "^@openstatus/(.*)$",
-    "^openstatus/(.*)$",
+    "^@thumpnail/(.*)$",
+    "^thumpnail/(.*)$",
     "",
     "^@/(.*)$",
     "^[./]"

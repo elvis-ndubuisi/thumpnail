@@ -4,6 +4,7 @@ import Link from "next/link";
 import {ModeToggle} from "@/components/mode-toggle";
 import {FAQsSection} from "@/components/sections/faqs";
 import {Button} from "@/components/ui/button";
+import {Footer} from "@/components/widgets/footer";
 
 export default function Page(): JSX.Element {
   return (
@@ -46,6 +47,7 @@ export default function Page(): JSX.Element {
 
         <FAQsSection />
       </main>
+      <Footer />
     </>
   );
 }
