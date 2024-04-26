@@ -44,7 +44,7 @@ model Account {
 model Session {
   sessionId String   @id @default(auto()) @map("_id") @db.ObjectId
   id        String   @unique
-  userId    String   @unique @db.ObjectId
+  userId    String   @db.ObjectId
   expiresAt DateTime
   user      User     @relation(references: [id], fields: [userId], onDelete: Cascade)
 
