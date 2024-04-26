@@ -1,0 +1,15 @@
+{
+  "name": "@thumpnail/id",
+  "version": "1.0.0",
+  "description": "API key generator",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "base-x": "^4.0.0"
+  }
+}
