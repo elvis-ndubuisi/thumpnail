@@ -1,7 +1,8 @@
 "use client";
 
 import React from "react";
-import {User} from "database/orms";
+
+import {User} from "@thumpnail/database/orms";
 
 import {DLINKS} from "@/assets/data/links";
 import {cn} from "@/lib/utils";

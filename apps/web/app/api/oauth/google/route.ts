@@ -1,7 +1,7 @@
 import {cookies} from "next/headers";
 import {NextRequest, NextResponse} from "next/server";
 import {OAuth2RequestError} from "arctic";
-import {User} from "database/orms";
+import {User} from "@thumpnail/database/orms"
 
 import {db} from "@/lib/db";
 import {GoogleUserInfo} from "@/lib/interfaces";

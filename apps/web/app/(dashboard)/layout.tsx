@@ -1,6 +1,7 @@
 import {cookies} from "next/headers";
 import {redirect} from "next/navigation";
-import {User} from "database/orms";
+
+import {User} from "@thumpnail/database/orms";
 
 import {DashboardPanel} from "@/components/sections/dashboard-panel";
 import {validateRequest} from "@/lib/lucia-auth/auth";

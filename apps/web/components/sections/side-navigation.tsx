@@ -1,8 +1,9 @@
 "use client";
 
 import Link from "next/link";
-import {User} from "database/orms";
 import {LogOutIcon, LucideIcon} from "lucide-react";
+
+import {User} from "@thumpnail/database/orms";
 
 import {signOut} from "@/actions/auth.actions";
 import {cn} from "@/lib/utils";

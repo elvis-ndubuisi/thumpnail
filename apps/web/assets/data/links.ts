@@ -9,6 +9,7 @@ import {
   KeySquareIcon,
   LucideIcon,
   MessageSquareReplyIcon,
+  NotebookTabs,
   SettingsIcon,
   ToyBrickIcon,
 } from "lucide-react";
@@ -22,7 +23,7 @@ export const DLINKS: {
 }[][] = [
   [
     {
-      icon: CircleGaugeIcon,
+      icon: NotebookTabs,
       label: "",
       title: "Dashboard",
       to: "/dashboard",
