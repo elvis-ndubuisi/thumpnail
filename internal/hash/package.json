@@ -1,5 +1,5 @@
 {
-  "name": "@thumpnail/hash",
+  "name": "@thumpnailss/hash",
   "version": "0.0.1",
   "description": "Provides a convenient way to calculate SHA-256 hashes of strings or binary data and return them in a base64 encoded format, which is useful for various cryptographic applications",
   "main": "index.js",
