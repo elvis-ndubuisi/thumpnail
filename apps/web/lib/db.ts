@@ -1,4 +1,4 @@
-import {PrismaClient} from "database/orms";
+import {PrismaClient} from "@thumpnail/database/orms";
 
 const globalForPrisma = globalThis as unknown as {
   prisma: PrismaClient | undefined;
