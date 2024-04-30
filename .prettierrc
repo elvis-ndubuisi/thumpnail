@@ -1,0 +1,32 @@
+{
+  "tabWidth": 2,
+  "arrowParens": "always",
+  "bracketSameLine": true,
+  "bracketSpacing": false,
+  "endOfLine": "lf",
+  "jsxSingleQuote": true,
+  "printWidth": 90,
+  "semi": true,
+  "trailingComma": "all",
+  "proseWrap": "always",
+  "embeddedLanguageFormatting": "auto",
+  "plugins": [
+    "@ianvs/prettier-plugin-sort-imports",
+    "prettier-plugin-tailwindcss"
+  ],
+  "importOrder": [
+    "<BUILTIN_MODULES>",
+    "^(react/(.*)$)|^(react$)",
+    "^(next/(.*)$)|^(next$)",
+    "<THIRD_PARTY_MODULES>",
+    "^@package/(.*)$",
+    "^@internal/(.*)$",
+    "",
+    "^@thumpnail/(.*)$",
+    "^thumpnail/(.*)$",
+    "",
+    "^@/(.*)$",
+    "^[./]"
+  ],
+  "importOrderTypeScriptVersion": "5.0.0"
+}
