@@ -1,22 +1,30 @@
 {
-    "name": "server",
-    "version": "0.0.0",
-    "description": "",
-    "private": true,
-    "scripts": {
-        "clean": "rimraf .turbo node_modules"
-    },
-    "dependencies": {
-        "cors": "^2.8.5",
-        "dotenv": "^16.4.5",
-        "express": "^4.19.2",
-        "helmet": "^7.1.0"
-    },
-    "devDependencies": {
-        "@types/cors": "^2.8.17",
-        "@types/express": "^4.17.21",
-        "@types/node": "^20.11.24",
-        "tsup": "^8.0.2",
-        "typescript": "^5.4.5"
-    }
+  "name": "server",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@tooling/eslint-config": "workspace:*",
+    "@tooling/typescript-config": "workspace:*",
+    "@types/cors": "^2.8.17",
+    "@types/eslint": "^8.56.5",
+    "@types/express": "^4.17.21",
+    "@types/node": "^20.11.24",
+    "dotenv": "^16.4.5",
+    "eslint": "^8.57.0",
+    "typescript": "^5.4.5"
+  },
+  "dependencies": {
+    "@thumpnail/blurhash": "workspace:*",
+    "cors": "^2.8.5",
+    "express": "^4.19.2",
+    "helmet": "^7.1.0",
+    "sharp": "^0.33.3"
+  }
 }
