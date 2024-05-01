@@ -6,7 +6,10 @@
     "dev": "turbo dev",
     "lint": "turbo lint",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
-    "prepare": "husky"
+    "prepare": "husky",
+    "db-prisma:push": "turbo db-prisma:push",
+    "db-prisma:generate": "turbo db-prisma:generate",
+    "db:push": "turbo db:push"
   },
   "devDependencies": {
     "@commitlint/cli": "^19.3.0",

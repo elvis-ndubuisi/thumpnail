@@ -1,0 +1,27 @@
+{
+  "name": "@thumpnail/db",
+  "description": "Shared database/orm configs",
+  "version": "0.0.0",
+  "main": "./src/index.ts",
+  "types": "./src/index.ts",
+  "scripts": {
+    "db-prisma:generate": "prisma generate",
+    "db-prisma:push": "prisma db push --skip-generate",
+    "db:push": "drizzle-kit push:sqlite",
+    "db:migrate": "drizzle-kit generate:sqlite",
+    "studio": "drizzle-kit studio "
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@libsql/client": "^0.6.0",
+    "@prisma/client": "^5.13.0",
+    "dotenv": "^16.4.5",
+    "drizzle-orm": "^0.30.9"
+  },
+  "devDependencies": {
+    "drizzle-kit": "^0.20.17",
+    "prisma": "^5.13.0"
+  }
+}
