@@ -4,7 +4,7 @@ import {redirect} from "next/navigation";
 // import {User} from "@thumpnail/db";
 import {User} from "lucia";
 
-import {DashboardHeader} from "@/components/widgets/dashboard-header";
+// import {DashboardHeader} from "@/components/widgets/dashboard-header";
 import {DashboardLayout} from "@/components/widgets/dashboard-layout";
 import {validateRequest} from "@/lib/lucia/auth";
 
@@ -19,7 +19,7 @@ export default async function Layout(props: React.PropsWithChildren) {
   if (!user) return redirect("/sign-in");
   return (
     <main className='flex h-screen flex-col'>
-      <DashboardHeader />
+      {/* <DashboardHeader /> */}
       <DashboardLayout
         user={user as User}
         defaultLayout={defaultLayout}

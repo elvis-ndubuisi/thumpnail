@@ -3,6 +3,7 @@ import "./globals.css";
 import type {Metadata} from "next";
 import localFont from "next/font/local";
 
+import {Toaster} from "@/components/ui/toaster";
 import {cn} from "@/lib/utils";
 
 const supreme = localFont({
@@ -11,7 +12,7 @@ const supreme = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "Thunmpnail",
+  title: "Thumpnail",
   description: "Generate placeholder images",
 };
 
@@ -21,6 +22,7 @@ export default function RootLayout({children}: {children: React.ReactNode}): JSX
       <body
         className={cn("relative min-h-screen font-sans antialiased", supreme.variable)}>
         {children}
+        <Toaster />
       </body>
     </html>
   );

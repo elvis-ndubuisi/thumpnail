@@ -1,37 +1,25 @@
-import {API, ApiKeyTable} from "@/components/tables/api-key-table";
-import {Button} from "@/components/ui/button";
+import {redirect} from "next/navigation";
 
-// import {db} from "@/lib/db";
-
-const data: API[] = [
-  {
-    id: "m5gr84i9",
-    key: "ken99@yahoo.com",
-    description: "somelioadsfjailsdjfioasdfji",
-    createdAt: "asdfasdf",
-  },
-  {
-    id: "3u1reuv4",
-    description: "somelioadsfjailsdjfioasdfji",
-    key: "ken99@yahoo.com",
-    createdAt: "asdfasdf",
-  },
-  {
-    id: "derv1ws0",
-    description: "somelioadsfjailsdjfioasdfji",
-    key: "ken99@yahoo.com",
-    createdAt: "asdfasdf",
-  },
-];
+import {ApiKeyTable} from "@/components/tables/api-key-table";
+import {GenerateAPIKey} from "@/components/widgets/generate-api-key";
+import {db} from "@/lib/db";
+import {validateRequest} from "@/lib/lucia/auth";
 
 export default async function Page() {
+  const {user} = await validateRequest();
+  if (!user) redirect("/sign-in");
+  const data = await db.project.findMany({
+    where: {userId: user.id},
+    select: {createdAt: true, id: true, key: true, title: true},
+  });
   return (
     <section className='p-4'>
       <div className='mb-3 space-y-2'>
         <h3 className='text-xl font-bold'>API Keys</h3>
         <p>You'll will need an api key to send request to thumpnail</p>
         <div className='flex items-center justify-start gap-3'>
-          <Button>Gnerate API Key</Button>
+          {/* <Button>Gnerate API Key</Button> */}
+          <GenerateAPIKey />
           <span className=''>1/1</span>
         </div>
       </div>

@@ -18,7 +18,9 @@ import {
   useReactTable,
   VisibilityState,
 } from "@tanstack/react-table";
+import moment from "moment";
 
+import {deleteApiKey} from "@/actions/key.action";
 import {Button} from "@/components/ui/button";
 import {Checkbox} from "@/components/ui/checkbox";
 import {
@@ -39,13 +41,15 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
+import {toast} from "@/components/ui/use-toast";
+import {maskAPiKey} from "@/lib/utils";
 
 export type API = {
   id: string;
-  description: string;
+  title: string;
   //   status: "pending" | "processing" | "success" | "failed";
   key: string;
-  createdAt: string;
+  createdAt: Date;
 };
 
 export const columns: ColumnDef<API>[] = [
@@ -77,9 +81,9 @@ export const columns: ColumnDef<API>[] = [
   //     cell: ({row}) => <div className='capitalize'>{row.getValue("status")}</div>,
   //   },
   {
-    accessorKey: "description",
+    accessorKey: "title",
     header: "Description",
-    cell: ({row}) => <div className=''>{row.getValue("description")}</div>,
+    cell: ({row}) => <div className=''>{row.getValue("title")}</div>,
   },
   {
     accessorKey: "key",
@@ -93,12 +97,14 @@ export const columns: ColumnDef<API>[] = [
         </Button>
       );
     },
-    cell: ({row}) => <div className=''>{row.getValue("key")}</div>,
+    cell: ({row}) => <div className=''>{maskAPiKey(row.getValue("key"))}</div>,
   },
   {
     accessorKey: "createdAt",
     header: "Added",
-    cell: ({row}) => <div className='capitalize'>{row.getValue("createdAt")}</div>,
+    cell: ({row}) => (
+      <div className='capitalize'>{moment(row.getValue("createdAt")).format("LL")}</div>
+    ),
   },
   //   {
   //     accessorKey: "amount",
@@ -131,16 +137,22 @@ export const columns: ColumnDef<API>[] = [
           </DropdownMenuTrigger>
           <DropdownMenuContent align='end'>
             <DropdownMenuLabel>Actions</DropdownMenuLabel>
-            <DropdownMenuItem onClick={() => navigator.clipboard.writeText(apiData.key)}>
-              Copy payment ID
-            </DropdownMenuItem>
-            <DropdownMenuSeparator />
-            <DropdownMenuItem>View customer</DropdownMenuItem>
             <DropdownMenuItem
               onClick={() => {
-                alert("adsfa");
+                navigator.clipboard.writeText(apiData.key);
+                toast({
+                  description: "API Key copied.",
+                });
               }}>
-              View payment details
+              Copy API key
+            </DropdownMenuItem>
+            <DropdownMenuSeparator />
+            {/* <DropdownMenuItem>View customer</DropdownMenuItem> */}
+            <DropdownMenuItem
+              onClick={async () => {
+                await deleteApiKey(apiData.id);
+              }}>
+              Delete API Key
             </DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>
