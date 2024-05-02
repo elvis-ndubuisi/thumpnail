@@ -119,7 +119,7 @@ export const columns: ColumnDef<API>[] = [
     id: "actions",
     enableHiding: false,
     cell: ({row}) => {
-      const payment = row.original;
+      const apiData = row.original;
 
       return (
         <DropdownMenu>
@@ -131,7 +131,7 @@ export const columns: ColumnDef<API>[] = [
           </DropdownMenuTrigger>
           <DropdownMenuContent align='end'>
             <DropdownMenuLabel>Actions</DropdownMenuLabel>
-            <DropdownMenuItem onClick={() => navigator.clipboard.writeText(payment.id)}>
+            <DropdownMenuItem onClick={() => navigator.clipboard.writeText(apiData.key)}>
               Copy payment ID
             </DropdownMenuItem>
             <DropdownMenuSeparator />

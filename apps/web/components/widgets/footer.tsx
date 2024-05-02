@@ -8,7 +8,7 @@ import {Separator} from "../ui/separator";
 export function Footer() {
   return (
     <footer className='mt-6 pb-8'>
-      <section className='h-9 bg-red-400'></section>
+      {/* <section className='h-9 bg-red-400'></section> */}
       <Separator className='my-4' />
       <div className='mx-auto flex max-w-screen-xl items-center justify-between text-sm'>
         <p>Copyright © 2024 Lineah. All rights reserved.</p>
