@@ -3,19 +3,21 @@
 import {cookies} from "next/headers";
 import {redirect} from "next/navigation";
 import {generateCodeVerifier, generateState} from "arctic";
-import {z} from "zod";
 
-import {emailSignInSchema} from "@/lib/schemas/auth.schema";
-import {lucia, validateRequest} from "../lucia/auth";
-import {google} from "../lucia/oauth";
+// import {z} from "zod";
 
-export async function emailSignIn(values: z.infer<typeof emailSignInSchema>) {
-  try {
-  } catch (error) {}
-}
+// import {emailSignInSchema} from "@/lib/schemas/auth.schema";
+import {lucia, validateRequest} from "../lib/lucia/auth";
+import {google} from "../lib/lucia/oauth";
+
+// export async function emailSignIn(values: z.infer<typeof emailSignInSchema>) {
+//   try {
+//   } catch (error) {}
+// }
 
 export async function createFacebookAuthURL() {
   try {
+    console.log("okay");
   } catch (error: any) {
     return {error: error?.message ?? "An error occurred"};
   }
