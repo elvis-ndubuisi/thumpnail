@@ -1,12 +1,12 @@
 import Link from "next/link";
 
 import {cn} from "@/lib/utils";
-import {badgeVariants} from "./ui/badge";
+import {badgeVariants} from "../ui/badge";
 
-// const LINKS = [
-//   {name: "Home", to: "/"},
-//   {name: "Docs", to: "/docs"},
-// ];
+const LINKS = [
+  {name: "Home", to: "/"},
+  {name: "Docs", to: "/docs"},
+];
 
 export function BaseHeader() {
   return (
@@ -15,6 +15,11 @@ export function BaseHeader() {
         <h1 className='text-[0.9rem] font-medium opacity-80 hover:opacity-100'>
           Thumpnail
         </h1>
+        {LINKS.map((link, idx) => (
+          <Link className='text-[0.9rem]' href={link.to} key={link.to + idx}>
+            {link.name}
+          </Link>
+        ))}
         <Link
           href={"/sign-in"}
           className={cn(

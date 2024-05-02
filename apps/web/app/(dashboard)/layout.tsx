@@ -1,6 +1,6 @@
 import React from "react";
 
-import {DashboardHeader} from "@/components/dashboard-header";
+import {DashboardHeader} from "@/components/widgets/dashboard-header";
 
 export default function Layout(props: React.PropsWithChildren) {
   return (
