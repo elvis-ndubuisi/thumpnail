@@ -1,6 +1,6 @@
-import { decode83 } from "./base83";
-import { sRGBToLinear, signPow, linearTosRGB } from "./utils";
-import { ValidationError } from "./error";
+import {decode83} from "./base83";
+import {ValidationError} from "./error";
+import {linearTosRGB, signPow, sRGBToLinear} from "./utils";
 
 /**
  * Returns an error message if invalid or undefined if valid
@@ -8,9 +8,7 @@ import { ValidationError } from "./error";
  */
 const validateBlurhash = (blurhash: string) => {
   if (!blurhash || blurhash.length < 6) {
-    throw new ValidationError(
-      "The blurhash string must be at least 6 characters"
-    );
+    throw new ValidationError("The blurhash string must be at least 6 characters");
   }
 
   const sizeFlag = decode83(blurhash[0]);
@@ -21,21 +19,21 @@ const validateBlurhash = (blurhash: string) => {
     throw new ValidationError(
       `blurhash length mismatch: length is ${
         blurhash.length
-      } but it should be ${4 + 2 * numX * numY}`
+      } but it should be ${4 + 2 * numX * numY}`,
     );
   }
 };
 
 export const isBlurhashValid = (
-  blurhash: string
-): { result: boolean; errorReason?: string } => {
+  blurhash: string,
+): {result: boolean; errorReason?: string} => {
   try {
     validateBlurhash(blurhash);
   } catch (error) {
-    return { result: false, errorReason: error.message };
+    return {result: false, errorReason: error.message};
   }
 
-  return { result: true };
+  return {result: true};
 };
 
 const decodeDC = (value: number) => {
@@ -59,12 +57,7 @@ const decodeAC = (value: number, maximumValue: number) => {
   return rgb;
 };
 
-const decode = (
-  blurhash: string,
-  width: number,
-  height: number,
-  punch?: number
-) => {
+const decode = (blurhash: string, width: number, height: number, punch?: number) => {
   validateBlurhash(blurhash);
 
   punch = punch | 1;
