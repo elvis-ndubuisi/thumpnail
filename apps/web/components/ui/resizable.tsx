@@ -20,7 +20,7 @@ const ResizablePanelGroup = ({
 
 const ResizablePanel = ResizablePrimitive.Panel;
 
-const ResizableHandle = ({
+const ResizableHandle: unknown = ({
   withHandle,
   className,
   ...props
