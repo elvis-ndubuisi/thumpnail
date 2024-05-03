@@ -29,8 +29,8 @@ export const isBlurhashValid = (
 ): {result: boolean; errorReason?: string} => {
   try {
     validateBlurhash(blurhash);
-  } catch (error) {
-    return {result: false, errorReason: error.message};
+  } catch (error: any) {
+    return {result: false, errorReason: error?.message};
   }
 
   return {result: true};
@@ -60,7 +60,8 @@ const decodeAC = (value: number, maximumValue: number) => {
 const decode = (blurhash: string, width: number, height: number, punch?: number) => {
   validateBlurhash(blurhash);
 
-  punch = punch | 1;
+  // punch = punch | 1;
+  punch = punch ?? 1;
 
   const sizeFlag = decode83(blurhash[0]);
   const numY = Math.floor(sizeFlag / 9) + 1;
