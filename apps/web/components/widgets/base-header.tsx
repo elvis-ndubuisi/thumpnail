@@ -15,19 +15,18 @@ export function BaseHeader() {
         <h1 className='text-[0.9rem] font-medium opacity-80 hover:opacity-100'>
           Thumpnail
         </h1>
-        {LINKS.map((link, idx) => (
-          <Link className='text-[0.9rem]' href={link.to} key={link.to + idx}>
-            {link.name}
+        <nav className='flex items-center gap-6'>
+          {LINKS.map((link, idx) => (
+            <Link className='text-[0.9rem]' href={link.to} key={link.to + idx}>
+              {link.name}
+            </Link>
+          ))}
+          <Link
+            href={"/sign-in"}
+            className={cn(badgeVariants({variant: "secondary"}), "text-[0.9rem]")}>
+            View account
           </Link>
-        ))}
-        <Link
-          href={"/sign-in"}
-          className={cn(
-            badgeVariants({}),
-            "from-brand to-brand/80 bg-gradient-to-tr text-[0.9rem]",
-          )}>
-          View account
-        </Link>
+        </nav>
       </section>
     </header>
   );

@@ -3,23 +3,22 @@
 import Link from "next/link";
 import {zodResolver} from "@hookform/resolvers/zod";
 import {useForm} from "react-hook-form";
-import {z} from "zod";
 
-import {createGoogleAuthURL} from "@/actions/auth.action";
 import {Button} from "@/components/ui/button";
 import {Form, FormField, FormItem, FormLabel, FormMessage} from "@/components/ui/form";
 import {Input} from "@/components/ui/input";
 import {Separator} from "@/components/ui/separator";
 import {toast} from "@/components/ui/use-toast";
-import {emailSignInSchema} from "@/lib/schemas/auth.schema";
+import {handleFacebookAuth, handleGoogleAuth} from "@/lib/auth-helpers";
+import {emailSignInSchema, EmailSignInType} from "@/lib/schemas/auth.schema";
 
 export default function Page() {
-  const form = useForm<z.infer<typeof emailSignInSchema>>({
+  const form = useForm<EmailSignInType>({
     defaultValues: {email: ""},
     resolver: zodResolver(emailSignInSchema),
   });
 
-  function onSubmit(data: z.infer<typeof emailSignInSchema>) {
+  function onSubmit(data: EmailSignInType) {
     toast({
       title: "You submitted the following values:",
       description: (
@@ -30,43 +29,24 @@ export default function Page() {
     });
   }
 
-  async function handleGoogleAuth() {
-    const resp = await createGoogleAuthURL();
-    if (resp.error) {
-      console.error(resp.error);
-    } else if (resp.success) {
-      window.location.href = resp.data.toString();
-    }
-  }
-
-  async function handleFacebookAuth() {
-    // const resp = await createFacebookAuthURL();
-  }
-
   return (
     <main>
       <section className='mt-12'>
-        <h3 className='text-center text-2xl font-bold'>Sign In</h3>
-        <p className='my-4 text-center text-lg font-medium'>
-          Enter your email below to process
+        <h3 className='text-center text-2xl font-black'>Sign In</h3>
+        <p className='my-3 text-center text-lg font-medium'>
+          {/* Enter your email below to process */}
+          Welcome back 😁 !!
         </p>
+        <header className='mx-auto mb-4 mt-4 grid w-full max-w-sm gap-3'>
+          <Button onClick={handleGoogleAuth}>Sign in with Google</Button>
+          <Button onClick={handleFacebookAuth} variant={"outline"}>
+            Sign in with Facebook
+          </Button>
+        </header>
         <Form {...form}>
           <form
             onSubmit={form.handleSubmit(onSubmit)}
             className='mx-auto grid max-w-sm gap-4'>
-            <header className='mx-auto mt-4 grid w-full max-w-sm gap-3'>
-              <Button size='sm' variant='outline' onClick={handleGoogleAuth}>
-                Sign in with google
-              </Button>
-              <Button
-                onClick={handleFacebookAuth}
-                className='bg-brand hover:bg-brand/80 text-white hover:text-white'
-                size='sm'
-                variant={"outline"}>
-                Sign in with facebook
-              </Button>
-            </header>
-
             <div className='flex items-center justify-center gap-3'>
               <Separator className='flex-1' />
               <p className='text-xs font-medium'>OR CONTINUE WITH EMAIL</p>
@@ -89,11 +69,16 @@ export default function Page() {
                 </FormItem>
               )}
             />
-
-            <Button type='submit' size='sm'>
-              Sign in
-            </Button>
-            <footer className='mx-auto mt-4 grid max-w-sm'>
+            <div className='grid gap-2'>
+              <p className='text-sm'>
+                Don't have an account?{" "}
+                <Link href='/sign-up' className='font-bold underline'>
+                  Sign up here
+                </Link>
+              </p>
+              <Button type='submit'>Sign in</Button>
+            </div>
+            <footer className='mx-auto mt-4 grid max-w-sm text-sm'>
               <p className='font-medium'>
                 By clicking continue, you agree to our{" "}
                 <Link href='/' className='text-brand underline'>
@@ -101,9 +86,8 @@ export default function Page() {
                 </Link>{" "}
                 and{" "}
                 <Link href='/' className='text-brand underline'>
-                  Privacy Policy
+                  Privacy Policy.
                 </Link>
-                .
               </p>
             </footer>
           </form>
