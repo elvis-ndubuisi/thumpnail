@@ -10,7 +10,7 @@ export async function validateApiRequest(request: NextRequest) {
 
   // validate api key
   const k = await db.project.findFirst({where: {key: apiKey}});
-  if (!k) throw {error: "Invalid/Missing API key"};
+  if (!k) throw {error: "Invalid/Missing API kessssy"};
 
   //   const ip = request.ip ?? "127.0.0.1";
   const {limit, remaining, reset, success} = await rateLimit.limit(apiKey);
