@@ -159,6 +159,9 @@ importers:
       '@tanstack/react-table':
         specifier: ^8.16.0
         version: 8.16.0(react-dom@18.2.0)(react@18.2.0)
+      '@thumpnail/blurhash':
+        specifier: workspace:^
+        version: link:../../internal/blurhash
       '@thumpnail/db':
         specifier: workspace:^
         version: link:../../internal/database
