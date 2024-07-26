@@ -44,6 +44,7 @@
     "clsx": "^2.1.1",
     "generate-api-key": "^1.0.2",
     "input-otp": "^1.2.4",
+    "jimp": "^0.22.12",
     "lucia": "^3.2.0",
     "lucide-react": "^0.377.0",
     "moment": "^2.30.1",
